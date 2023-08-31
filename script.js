@@ -1,8 +1,8 @@
 const modal = document.querySelector('.modal-container')
 const tbody = document.querySelector('tbody')
-const sAtvn = document.querySelector('#m-Atvn')
-const sData = document.querySelector('#m-Data')
-const sEstado = document.querySelector('#m-Estado')
+const sNome = document.querySelector('#m-Atvn')
+const sFuncao = document.querySelector('#m-Data')
+const sSalario = document.querySelector('#m-Estado')
 const btnSalvar = document.querySelector('#btnSalvar')
 
 let itens
@@ -17,14 +17,14 @@ function openModal(edit = false, index = 0) {
     }
   
     if (edit) {
-        sAtvn.value = itens[index].nome
-        sData.value = itens[index].funcao
-        sEstado.value = itens[index].salario
+        sNome.value = itens[index].nome
+        sFuncao.value = itens[index].funcao
+        sSalario.value = itens[index].salario
         id = index
     } else {
-        sAtvn.value = ''
-        sData.value = ''
-        sEstado.value = ''
+        sNome.value = ''
+        sFuncao.value = ''
+        sSalario.value = ''
     }
     
 }
@@ -44,7 +44,7 @@ function insertItem(item, index) {
         tr.innerHTML = `
         <td>${item.nome}</td>
         <td>${item.funcao}</td>
-        <td>R$ ${item.salario}</td>
+        <td>${item.salario}</td>
         <td class="acao">
             <button onclick="editItem(${index})"><i class='bx bx-edit' ></i></button>
         </td>
@@ -76,17 +76,3 @@ btnSalvar.onclick = e => {
     loadItens()
     id = undefined
 }
-  
-function loadItens() {
-    itens = getItensBD()
-    tbody.innerHTML = ''
-    itens.forEach((item, index) => {
-    insertItem(item, index)
-    })
-  
-}
-  
-const getItensBD = () => JSON.parse(localStorage.getItem('dbfunc')) ?? []
-const setItensBD = () => localStorage.setItem('dbfunc', JSON.stringify(itens))
-  
-loadItens()
