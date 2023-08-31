@@ -17,14 +17,14 @@ function openModal(edit = false, index = 0) {
     }
   
     if (edit) {
-      sAtvn.value = itens[index].nome
-      sData.value = itens[index].funcao
-      sEstado.value = itens[index].salario
-      id = index
+        sAtvn.value = itens[index].nome
+        sData.value = itens[index].funcao
+        sEstado.value = itens[index].salario
+        id = index
     } else {
-      sAtvn.value = ''
-      sData.value = ''
-      sEstado.value = ''
+        sAtvn.value = ''
+        sData.value = ''
+        sEstado.value = ''
     }
     
 }
